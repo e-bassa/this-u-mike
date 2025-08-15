@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>this u mike?</title>
+  <style>
+    :root { --bg: #eceff3; }
+    html, body { height: 100%; margin: 0; background: var(--bg); }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .wrap { min-height: 100%; display: grid; place-items: center; padding: 24px; }
+    .card {
+      width: min(94vw, 860px);
+      aspect-ratio: 2/3;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,.16), 0 2px 12px rgba(0,0,0,.10);
+      background: #dfe5ea;
+    }
+    .caption { margin-top: 12px; font-size: 13px; color: #5b6570; text-align: center; user-select: none; }
+    svg { display:block; width:100%; height:100%; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" aria-label="Framed home mirror with clown reflection">
+      <svg viewBox="0 0 800 1200" role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="title">Framed mirror with clown reflection</title>
+        <desc id="desc">A house-style mirror with a wooden frame. In the mirror, a friendly clown is reflected, with white face paint, red nose, colorful curly wig and ruffled collar.</desc>
+
+        <!-- defs -->
+        <defs>
+          <!-- Wood tone base gradient -->
+          <linearGradient id="woodBase" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#5f3a1d"/>
+            <stop offset="25%" stop-color="#8c5a2b"/>
+            <stop offset="50%" stop-color="#a87445"/>
+            <stop offset="75%" stop-color="#8b5726"/>
+            <stop offset="100%" stop-color="#5a351b"/>
+          </linearGradient>
+
+          <!-- Subtle wood grain using turbulence -->
+          <filter id="woodGrain" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="3" seed="7" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0"/>
+            <feComponentTransfer>
+              <feFuncA type="table" tableValues="0 0.15"/>
+            </feComponentTransfer>
+          </filter>
+
+          <!-- Inner bevel for the frame lip -->
+          <linearGradient id="innerLip" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(255,255,255,.55)"/>
+            <stop offset="45%" stop-color="rgba(0,0,0,.06)"/>
+            <stop offset="100%" stop-color="rgba(0,0,0,.18)"/>
+          </linearGradient>
+
+          <!-- Glass gradient -->
+          <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#eef3f8"/>
+            <stop offset="100%" stop-color="#d8e0e7"/>
+          </linearGradient>
+
+          <!-- Glare strips -->
+          <linearGradient id="glare" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="rgba(255,255,255,.7)"/>
+            <stop offset="60%" stop-color="rgba(255,255,255,0)"/>
+          </linearGradient>
+
+          <!-- Vignette -->
+          <radialGradient id="vignette" cx="50%" cy="45%" r="80%">
+            <stop offset="60%" stop-color="rgba(0,0,0,0)"/>
+            <stop offset="100%" stop-color="rgba(0,0,0,.18)"/>
+          </radialGradient>
+
+          <!-- Wig gradients -->
+          <radialGradient id="wigRed" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#ff6a6a"/>
+            <stop offset="100%" stop-color="#c22a2a"/>
+          </radialGradient>
+          <radialGradient id="wigBlue" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#6cc6ff"/>
+            <stop offset="100%" stop-color="#247ab3"/>
+          </radialGradient>
+          <radialGradient id="wigYellow" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#ffe066"/>
+            <stop offset="100%" stop-color="#c8a323"/>
+          </radialGradient>
+          <radialGradient id="wigGreen" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#7af28a"/>
+            <stop offset="100%" stop-color="#2d8e3a"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Outer wooden frame -->
+        <g>
+          <rect x="10" y="10" width="780" height="1180" rx="42" fill="url(#woodBase)"/>
+          <!-- Grain overlay -->
+          <rect x="10" y="10" width="780" height="1180" rx="42" filter="url(#woodGrain)" opacity=".25"/>
+          <!-- Inner lip bevel to suggest depth -->
+          <rect x="34" y="34" width="732" height="1132" rx="32" fill="url(#innerLip)" opacity=".6"/>
+        </g>
+
+        <!-- Glass -->
+        <rect x="58" y="58" width="684" height="1084" rx="28" fill="url(#glassGrad)"/>
+
+        <!-- Glass glare/smudges -->
+        <g opacity=".16">
+          <rect x="96"  y="80"  width="140" height="1040" rx="70" fill="url(#glare)"/>
+          <rect x="566" y="120" width="70"  height="980"  rx="35" fill="url(#glare)"/>
+          <path d="M140,500 C220,480 280,520 360,500" stroke="#ffffff" stroke-opacity=".35" stroke-width="6" fill="none"/>
+          <path d="M200,760 C280,740 330,775 410,760" stroke="#ffffff" stroke-opacity=".28" stroke-width="5" fill="none"/>
+        </g>
+
+        <!-- Clown reflection -->
+        <g transform="translate(400,700)">
+          <!-- collar ruffles -->
+          <g transform="translate(0,210)">
+            <path d="M-140,0 L-90,-40 L-40,0 L10,-40 L60,0 L110,-40 L160,0 L110,40 L60,0 L10,40 L-40,0 L-90,40 Z"
+                  fill="#c9d7ff" opacity=".95"/>
+            <path d="M-120,20 L-80,-10 L-40,20 L0,-10 L40,20 L80,-10 L120,20 L80,50 L40,20 L0,50 L-40,20 L-80,50 Z"
+                  fill="#9ab0ff" opacity=".9"/>
+          </g>
+
+          <!-- torso -->
+          <rect x="-130" y="160" width="260" height="220" rx="40" fill="#ffb84d"/>
+          <circle cx="0" cy="230" r="16" fill="#f04e23"/>
+          <circle cx="0" cy="275" r="16" fill="#2bb673"/>
+          <circle cx="0" cy="320" r="16" fill="#3fa9f5"/>
+
+          <!-- head shadow -->
+          <ellipse cx="0" cy="110" rx="110" ry="120" fill="rgba(0,0,0,.08)"/>
+          <!-- face -->
+          <ellipse cx="0" cy="100" rx="105" ry="115" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/>
+
+          <!-- wig (colorful curls) -->
+          <g opacity=".95">
+            <circle cx="-95" cy="50" r="46" fill="url(#wigRed)"/>
+            <circle cx="-60" cy="20" r="48" fill="url(#wigYellow)"/>
+            <circle cx="0" cy="5" r="52" fill="url(#wigBlue)"/>
+            <circle cx="60" cy="20" r="48" fill="url(#wigGreen)"/>
+            <circle cx="95" cy="50" r="46" fill="url(#wigRed)"/>
+            <circle cx="-20" cy="-20" r="30" fill="url(#wigGreen)"/>
+            <circle cx="25" cy="-18" r="28" fill="url(#wigYellow)"/>
+          </g>
+
+          <!-- eyes -->
+          <g transform="translate(0,90)">
+            <ellipse cx="-35" cy="-10" rx="22" ry="16" fill="#1a1a1a"/>
+            <ellipse cx=" 35" cy="-10" rx="22" ry="16" fill="#1a1a1a"/>
+            <circle cx="-35" cy="-12" r="5" fill="#ffffff" />
+            <circle cx="35"  cy="-12" r="5" fill="#ffffff" />
+          </g>
+
+          <!-- brows (paint) -->
+          <path d="M-70,70 q20,-25 40,0" stroke="#2b2b2b" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M30,70 q20,-25 40,0" stroke="#2b2b2b" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+          <!-- nose -->
+          <circle cx="0" cy="110" r="22" fill="#e61e10"/>
+          <!-- cheeks -->
+          <circle cx="-55" cy="120" r="20" fill="#ff7b7b" opacity=".35"/>
+          <circle cx="55"  cy="120" r="20" fill="#ff7b7b" opacity=".35"/>
+
+          <!-- mouth (smile) -->
+          <path d="M-55,150 q55,45 110,0" stroke="#cc1e1e" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M-40,145 q40,28 80,0" stroke="#ff4a4a" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+          <!-- ruffled collar shadow -->
+          <ellipse cx="0" cy="210" rx="120" ry="18" fill="rgba(0,0,0,.12)"/>
+        </g>
+
+        <!-- glass vignette -->
+        <rect x="58" y="58" width="684" height="1084" rx="28" fill="url(#vignette)" opacity=".35"/>
+      </svg>
+    </div>
+    <div class="caption">Saved as “this u mike?.html” and a safer copy “this_u_mike.html” (some hosts reject ? in filenames).</div>
+  </div>
+</body>
+</html>
